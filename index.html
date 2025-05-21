@@ -1,138 +1,494 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Belajar Teknik Sipil</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #1A365D;
+      --accent: #4299E1;
+      --light: #F7FAFC;
+      --text: #2D3748;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--light);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    header {
+      color: white;
+      padding: 80px 20px;
+      text-align: center;
+      background-image: url('foto.jpg');
+    }
+
+    header h1 {
+      font-size: 3.5rem;
+      margin-bottom: 10px;
+    }
+
+    header p {
+      font-size: 1.3rem;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    nav {
+      background: white;
+      padding: 15px 30px;
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: var(--primary);
+      font-weight: 600;
+    }
+
+    nav a:hover {
+      color: var(--accent);
+    }
+
+    .section {
+      max-width: 1100px;
+      margin: auto;
+      padding: 60px 20px;
+    }
+
+    .section h2 {
+      font-size: 2.2rem;
+      margin-bottom: 30px;
+      color: var(--primary);
+      text-align: center;
+    }
+
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+    }
+
+    .card {
+      background: white;
+      padding: 25px;
+      border-radius: 12px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.05);
+      text-align: center;
+      transition: transform 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+    }
+
+    .card h3 {
+      color: var(--accent);
+      margin-bottom: 10px;
+    }
+
+    .stats {
+      display: flex;
+      justify-content: space-around;
+      margin-top: 40px;
+      text-align: center;
+      flex-wrap: wrap;
+    }
+
+    .stat {
+      flex: 1;
+      min-width: 150px;
+      margin: 10px;
+    }
+
+    .stat h3 {
+      font-size: 2.5rem;
+      color: var(--accent);
+    }
+
+    .testimonials {
+      display: flex;
+      overflow-x: auto;
+      gap: 20px;
+      scroll-snap-type: x mandatory;
+      padding-bottom: 20px;
+    }
+
+    .testimonial {
+      scroll-snap-align: start;
+      flex: 0 0 300px;
+      background: white;
+      border-left: 5px solid var(--accent);
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+    }
+
+    .cta {
+      background: var(--accent);
+      color: white;
+      padding: 60px 20px;
+      text-align: center;
+      border-radius: 16px;
+      margin: 40px auto;
+      max-width: 800px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    }
+
+    .cta h2 {
+      margin-bottom: 10px;
+    }
+
+    .cta a {
+      display: inline-block;
+      margin-top: 15px;
+      padding: 12px 25px;
+      background: white;
+      color: var(--accent);
+      border-radius: 6px;
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+    .contact-info {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      max-width: 500px;
+      margin: 0 auto;
+      margin-top: 30px;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+      padding: 15px 20px;
+      transition: transform 0.3s ease;
+    }
+
+    .contact-item:hover {
+      transform: scale(1.02);
+    }
+
+    .contact-item img {
+      width: 40px;
+      height: 40px;
+      margin-right: 20px;
+    }
+
+    .contact-item p {
+      margin: 0;
+      font-weight: 600;
+      color: var(--primary);
+    }
+
+    .contact-item strong {
+      color: var(--text);
+      font-size: 1rem;
+    }
+
+    /* New Footer Styles */
+    .site-footer {
+      background: #3e4995;
+      color: white;
+      padding: 50px 20px 20px;
+      margin-top: 40px;
+      font-size: 0.95rem;
+    }
+
+    .footer-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      max-width: 1200px;
+      margin: 0 auto;
+      gap: 30px;
+    }
+
+    .footer-column {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .footer-column h3 {
+      font-size: 1.2rem;
+      margin-bottom: 20px;
+      color: white;
+    }
+
+    .footer-links {
+      list-style: none;
+      padding: 0;
+    }
+
+    .footer-links li {
+      margin-bottom: 10px;
+    }
+
+    .footer-links a {
+      color: #cbd5e0;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover {
+      color: white;
+    }
+
+    .social-icons {
+      display: flex;
+      gap: 15px;
+      margin-top: 15px;
+    }
+
+    .social-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.1);
+    }
+
+    .social-icon:hover {
+      background: rgba(255,255,255,0.2);
+    }
+
+    .social-icon img {
+      width: 16px;
+      height: 16px;
+    }
+
+    .contact-details p {
+      display: flex;
+      align-items: center;
+      margin-bottom: 15px;
+      color: #cbd5e0;
+    }
+
+    .contact-details img {
+      width: 18px;
+      height: 18px;
+      margin-right: 10px;
+    }
+
+    .buy-now-button {
+      display: inline-block;
+      background: #4299E1;
+      color: white !important;
+      padding: 8px 20px;
+      border-radius: 4px;
+      font-weight: 600;
+    }
+
+    .buy-now-button:hover {
+      background: #3182ce;
+    }
+
+    .footer-bottom {
+      margin-top: 40px;
+      padding-top: 20px;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      text-align: center;
+      font-size: 0.85rem;
+      color: #a0aec0;
+    }
+
+    @media (max-width: 768px) {
+      .footer-container {
+        flex-direction: column;
+      }
+      
+      .footer-column {
+        width: 100%;
+        margin-bottom: 30px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 2rem;
+      }
+
+      .section h2 {
+        font-size: 1.6rem;
+      }
+    }
+  </style>
 </head>
-<style>
-    body{
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        font-family: Aral, Helvetica, sans-serif;
-    }
-
-    #getslevuniberua{
-        width: 200px;
-        border-radius: 12%
-    
-    }
-
-    .hobi{
-        color: rgb(93, 176, 93);
-        
-    }
-
-    .biodata{
-        color: rgb(122, 122, 197);
-        width: 280px;
-    }
-    
-    .data{
-        
-    }
-
-    .quotes{
-        color: rgb(194, 138, 28);
-        width: fit-content;
-        font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-        font-size: 30px;
-    }
-  
-    #linkon{
-        width: 150px;
-        border: 10px solid brown
-    }
-
-    #frontpage{
-        width : 100vw;
-        height:100vh;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        background-color: #b32424;
-        color: #fff0ba;
-        font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-        
-    }
-
-    #hello{
-        font-size: 100px;
-    }
-
-    #name{
-
-    }
-    
-    #gets{
-        font-size: 100px;
-    }
-    
-    #inside{
-        display: flex;
-
-    }
-
-    #gradasi{
-        background-image: linear-gradient(rgba(179, 36, 36, 1), white);
-        width: 100vw;
-        height: 300px;
-
-    }
-
-    #kuskus{
-        padding-top: 200px;
-
-    }
-    
-</style>
 <body>
-    <div id="frontpage">
-        <div id="inside">
-            <h1 id="hello">Hello</h1>
-            <h1 id="name">My Name Is</h1>
-            <h1 id="gets">Gets</h1>
-        </div>        
+
+  <header>
+    <h1>Belajar Teknik Sipil</h1>
+    <p>Platform belajar modern untuk mahasiswa teknik sipil — Getslev Uniberua</p>
+  </header>
+
+  <nav>
+    <a href="#fitur">Fitur</a>
+    <a href="#materi">Materi</a>
+    <a href="#testimoni">Testimoni</a>
+    <a href="#kontak">Kontak</a>
+  </nav>
+
+  <section id="fitur" class="section">
+    <h2>Kenapa Memilih Kami?</h2>
+    <div class="features">
+      <div class="card">
+        <h3>Gratis & Terbuka</h3>
+        <p>Semua materi dapat diakses tanpa biaya. Kami percaya ilmu harus inklusif.</p>
+      </div>
+      <div class="card">
+        <h3>Visual Interaktif</h3>
+        <p>Diagram, simulasi, dan gambar teknik yang mudah dipahami untuk semua level.</p>
+      </div>
+      <div class="card">
+        <h3>Materi Terstruktur</h3>
+        <p>Dari konsep dasar hingga proyek akhir, semua dirancang untuk progres belajar.</p>
+      </div>
+      <div class="card">
+        <h3>Dukungan Komunitas</h3>
+        <p>Forum mahasiswa untuk diskusi, tanya jawab, dan berbagi tugas atau ide.</p>
+      </div>
     </div>
-    <div id="gradasi">
-        <h1> </h1>
+
+    <div class="stats">
+      <div class="stat">
+        <h3>12K+</h3>
+        <p>Mahasiswa Terdaftar</p>
+      </div>
+      <div class="stat">
+        <h3>120+</h3>
+        <p>Topik Materi</p>
+      </div>
+      <div class="stat">
+        <h3>98%</h3>
+        <p>Kepuasan Pengguna</p>
+      </div>
     </div>
-    <h1 id="kuskus">Getslev Febriel Uniberua</h1>
-    <img id="getslevuniberua" src="foto.jpg" alt="foto hilang">
-    <div class="data">
-        <div class="biodata"> 
-            <h3 class="topic">Biodata:</h3>
-            <ol>
-                <li>NAMA: GETSLEV FEBRIEL UNIBERUA</li>
-                <li>TEMPAT/TGL LAHIR: AMBON 23 FEBRUARI 2007</li>
-                <li>JENIS KELAMIN: LAKI LAKI</li>
-                <li>ALAMAT: AHURU</li>
-                <li>GOL.DARAH: O</li>
-                <li>RT/RW: 003/016</li>
-                <li>KEL/DESA: BATUMERAH</li>
-                <li>KECAMATAN: SIRIMAU</li>
-                <li>AGAMA: KRISTEN </li>
-                <li>STATUS: MAHASISWA</li>
-            </ol> 
+  </section>
+
+  <section id="materi" class="section">
+    <h2>Materi Populer</h2>
+    <div class="features">
+      <div class="card">
+        <h3>Pengantar Teknik Sipil</h3>
+        <p>Mengenal sejarah, peran, dan bidang kerja seorang engineer sipil.</p>
+      </div>
+      <div class="card">
+        <h3>Struktur Bangunan</h3>
+        <p>Pengenalan elemen struktur, beban, dan sistem rangka.</p>
+      </div>
+      <div class="card">
+        <h3>Hidrolika & Drainase</h3>
+        <p>Mempelajari aliran air, saluran, dan manajemen banjir di perkotaan.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="testimoni" class="section">
+    <h2>Apa Kata Mereka?</h2>
+    <div class="testimonials">
+      <div class="testimonial">
+        <p>"Website ini bikin belajar struktur jadi nggak menakutkan. Simulasinya keren banget!"</p>
+        <strong>- Alex Cupang, Mahasiswa UI</strong>
+      </div>
+      <div class="testimonial">
+        <p>"Materinya lengkap dan tampilannya modern. Dulu saya bingung mulai dari mana, sekarang jelas arahnya."</p>
+        <strong>- Gets Cornering, Semester 2</strong>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta section">
+      <h2>Mulai Belajar Sekarang</h2>
+      <p>Gabung bersama ribuan mahasiswa lainnya dan bangun fondasi teknikmu hari ini.</p>
+      <a href="#materi">Akses Materi</a>
+  </section>
+
+  <section id="kontak" class="section">
+    <h2>Hubungi Kami</h2>
+    <div class="contact-info">
+      <div class="contact-item">
+        <img src="email.png" alt="Email Icon">
+        <div>
+          <p>Email</p>
+          <strong>getslev@belajartekniksipil.id</strong>
         </div>
-        <div class="hobi">
-            <h3 class="topic">Hobi:</h3>
-            <ul>
-                <li>BILLIARD</li>
-                <li>FUTSAL</li>
-                <li>MUSIK</li>
-                <li>VALORANT</li>
-                <li>GAMBAR</li>
-            </ul>
+      </div>
+      <div class="contact-item">
+        <img src="instagram.png" alt="Instagram Icon">
+        <div>
+          <p>Instagram</p>
+          <strong>@belajartekniksipil.getslev</strong>
         </div>
-   </div> 
-    <h3 class="informasi">getslevuniberua@gmail.com</h3>
-    <h3 class="informasi" id="nomor">081343041303</h3>
-    <h3 class="informasi">Ahuru</h3>
-    <img id="linkon" src="linkon.jpeg" alt="su meninggal">
-    <h1 class="quotes">"The best way to predict your future, is to create it" </h1>
-    <h1 class="quotes">- Abraham Lincoln</h1>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-column">
+        <h3>Belajar Teknik Sipil</h3>
+        <p>Platform belajar modern untuk mahasiswa teknik sipil</p>
+        <div class="social-icons">
+          <a href="#" class="social-icon"><img src="twitter.png" alt="Twitter"></a>
+          <a href="#" class="social-icon"><img src="instagram.png" alt="Instagram"></a>
+        </div>
+      </div>
+      
+      <div class="footer-column">
+        <h3>Explore</h3>
+        <ul class="footer-links">
+          <li><a href="#">Fitur</a></li>
+          <li><a href="#">Materi</a></li>
+          <li><a href="#">Testimoni</a></li>
+          <li><a href="#">Kontak</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-column">
+        <h3>Materi</h3>
+        <ul class="footer-links">
+          <li><a href="#">Pengantar</a></li>
+          <li><a href="#">Struktur Bangunan</a></li>
+          <li><a href="#">Hidrolika & Drainase</a></li>
+          <li><a href="#" class="buy-now-button">Belajar Sekarang</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-column">
+        <h3>Get In Touch</h3>
+        <div class="contact-details">
+          <p><img src="email.png" alt="Email"> getslev@belajartekniksipil.id</p>
+          <p><img src="call.png" alt="Phone"> +62 813 4304 1303</p>
+          <p> SENIN – JUMAT 09:25 AM to 05:55 PM<br>MINGGU – CLOSED</p>
+        </div>
+      </div>
+    </div>
+    
+    <div class="footer-bottom">
+      <p>Copyright Getslev Uniberua CC</p>
+    </div>
+  </footer>
 </body>
 </html>
